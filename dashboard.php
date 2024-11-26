@@ -243,7 +243,7 @@ if (!isset($_SESSION['admin_id'])) {
             </tr>
           </thead>
           <tbody id="table-body">
-            <!-- Rows will be dynamically inserted here -->
+      
           </tbody>
         </table>
        

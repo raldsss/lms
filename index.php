@@ -4,7 +4,7 @@ require('dbconnection.php');
 
 $errors = [];
 
-// Check if already logged in
+
 if (isset($_SESSION['admin_id'])) {
     header('Location: dashboard.php');
     exit();
@@ -14,7 +14,7 @@ if (isset($_POST['login'])) {
     $username = trim($_POST['username']);
     $password = trim($_POST['password']);
 
-    // Use prepared statements to prevent SQL injection
+    
     $stmt = $connect->prepare("SELECT * FROM admin_tbl WHERE username = ? AND password = ?");
     $stmt->bind_param("ss", $username, $password);
     $stmt->execute();
@@ -22,7 +22,6 @@ if (isset($_POST['login'])) {
     $admin_row = $result->fetch_assoc();
 
     if (!empty($admin_row)) {
-        // Set session variables
         $_SESSION['admin_id'] = $admin_row['admin_id'];
         $_SESSION['admin_name'] = $admin_row['admin_name'];
         $_SESSION['username'] = $admin_row['username'];
@@ -46,7 +45,7 @@ if (isset($_POST['login'])) {
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 
-    <!-- Custom CSS -->
+    
     <style>
         body {
             margin: 0;

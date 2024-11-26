@@ -7,23 +7,23 @@ if (!isset($_SESSION['admin_id'])) {
 
 include('dbconnection.php');
 
-// Pagination setup
-$limit = 10;  // Number of books per page
+
+$limit = 10;  
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $offset = ($page - 1) * $limit;
 
-// Search functionality
+
 $search = '';
 if (isset($_POST['search'])) {
     $search = mysqli_real_escape_string($connect, $_POST['search']);
 }
 
-// Modify the query to filter books based on search term
+
 $search_query = $search ? "WHERE book_name LIKE '%$search%' OR category LIKE '%$search%'" : '';
 $query = "SELECT * FROM book $search_query LIMIT $limit OFFSET $offset";
 $books_result = mysqli_query($connect, $query);
 
-// Get total number of books to calculate pagination
+
 $total_books_result = mysqli_query($connect, "SELECT COUNT(*) AS total FROM book $search_query");
 $total_books = mysqli_fetch_assoc($total_books_result)['total'];
 $total_pages = ceil($total_books / $limit);
@@ -76,14 +76,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_book'])) {
     $book_name = mysqli_real_escape_string($connect, $_POST['book_name']);
     $category = mysqli_real_escape_string($connect, $_POST['category']);
     $date = mysqli_real_escape_string($connect, $_POST['date']);
-    $image_path = $_POST['image_path'];  // Keep the old image path if not updated
+    $image_path = $_POST['image_path'];  
 
     if (empty($date)) {
         $date = date('Y-m-d');
     }
 
     if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
-        // Handle image upload for edit
+        
         $image = $_FILES['image'];
         $image_tmp_name = $image['tmp_name'];
         $image_name = $image['name'];
@@ -100,7 +100,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_book'])) {
             $upload_path = $upload_dir . $new_image_name;
 
             if (move_uploaded_file($image_tmp_name, $upload_path)) {
-                // Update the book record with new image
+            
                 $query = "UPDATE book SET book_name='$book_name', category='$category', image='$upload_path', date='$date' WHERE book_id='$book_id'";
                 if (mysqli_query($connect, $query)) {
                     header('Location: books.php');
@@ -115,7 +115,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_book'])) {
             $message = "Invalid image format. Only JPG, PNG, and GIF are allowed.";
         }
     } else {
-        // Update the book without changing the image
+        
         $query = "UPDATE book SET book_name='$book_name', category='$category', date='$date' WHERE book_id='$book_id'";
         if (mysqli_query($connect, $query)) {
             header('Location: books.php');
@@ -126,7 +126,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_book'])) {
     }
 }
 
-// Handle book deletion
+
 if (isset($_POST['delete_book_id'])) {
     $book_id = $_POST['delete_book_id'];
     $delete_query = "DELETE FROM book WHERE book_id = '$book_id'";
