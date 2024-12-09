@@ -1,0 +1,144 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f4f4f9;
+  }
+  
+  h1 {
+    font-size: 1.5rem;
+    text-align: left;
+    margin: 1rem;
+  }
+  
+  nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background-color: #007bff;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  nav a {
+    color: white;
+    font-size: 1.2rem;
+    text-decoration: none;
+  }
+  
+  nav a.active {
+    font-weight: bold;
+  }
+  
+  @media (max-width: 768px) {
+    nav {
+      position: fixed;
+      bottom: 0;
+      top: auto;
+      width: 100%;
+      box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.2);
+    }
+    .title{
+      margin-top: 1rem;
+      text-align: center;
+    }
+    .img {
+    max-width: 200px;    
+    }
+    .user-card{
+      position: relative;
+      top: 5rem;
+    }
+    #name{
+        position: relative;
+        left: 3.5rem;
+    }
+  }
+  
+  .user-card {
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    max-width: 350px;
+    margin: 2rem auto;
+    overflow: hidden;
+    text-align: center;
+  }
+  
+  img {
+    width: 60%;
+    border-radius: 50%;
+    border-bottom: 5px solid #007bff;
+  }
+  
+  .user-card h2 {
+    font-size: 1.5rem;
+    margin: 15px 0 5px;
+    color: #333;
+  }
+  
+  .user-card p {
+    font-size: 0.9rem;
+    color: #777;
+    margin-bottom: 1rem;
+  }
+  
+  .user-card .info {
+    display: flex;
+    justify-content: space-around;
+    border-top: 1px solid #eee;
+    padding: 10px 0;
+  }
+  
+  .user-card .info div {
+    text-align: center;
+  }
+  
+  .user-card .info div h3 {
+    font-size: 1.2rem;
+    margin: 5px 0;
+    color: #007bff;
+  }
+  
+  .user-card .info div p {
+    font-size: 0.8rem;
+    color: #777;
+  }
+  
+  .user-card .button_view {
+    background: #007bff;
+    padding: 10px;
+  }
+  
+  .user-card .button_view .edit {
+    color: #fff;
+    font-size: 1rem;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .button_view {
+    background: #007bff;
+  }
+  
+  /* .user-card .button_view .edit:hover {
+    text-decoration: underline;
+  } */
+  .edit{
+      background: none;
+      border: none;
+      text-decoration: none;
+  }
+  .title{
+    margin-top: 2rem;
+  }

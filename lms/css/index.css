@@ -1,0 +1,89 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    width: 100vh;
+    height: 100vh;;
+}
+section {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, #9745e3, #2977b2);
+}
+.container{
+    height: 100%;
+}
+.library-text {
+    position: fixed;
+    top: 5%;
+    left: 10%;
+    width: 25%;
+    font-size: 30px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: #ffffff;
+    font-weight: 800;
+}
+.image{
+    position: fixed;
+    top: 25%;
+    left: 5%;
+}
+.image > img {
+    filter: drop-shadow(8px 8px 16px #b7b7b7);
+}
+.form{
+    position: fixed;
+    top: 10%;
+    right: 10%;
+    background: #fff;
+    width: 30%;
+    height: 80%;
+    border-radius: 10px;
+    box-shadow: 0px 1px 5px 5px #bdbebf;
+}
+.form-content {
+    width: 100%;
+}
+.welcome {
+    width: 100%;
+    padding: 10% 20%;
+    font-size: 25px;
+    font-weight: 800;
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.input {
+    /* background: red; */
+    padding: 5% 20%;
+    line-height: 1;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.input > .password {
+    margin-top: 15%;
+}
+.input span {
+    font-size: 22px;
+}
+.input input {
+    padding: 2%;
+    margin-top: 2%;
+    width: 100%;
+    font-size: 18px;
+}
+.submit {
+    margin-top: 10%;
+}
+.submit > input:hover {
+    cursor: pointer;
+    font-weight: 700;
+}
+.alert {
+    margin-top: 8%;
+    text-align: center;
+    color: red;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 16px;
+}

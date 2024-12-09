@@ -1,0 +1,271 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f9f9f9;
+}
+
+h1 {
+    font-size: 1.5rem;
+    text-align: left;
+    margin: 1rem;
+    position: relative;
+    top: 10px;
+}
+
+/* Navigation Bar */
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background-color: #007bff;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav a {
+    color: white;
+    font-size: 1.2rem;
+    text-decoration: none;
+}
+
+nav a.active {
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    nav {
+        position: fixed;
+        bottom: 0;
+        top: auto;
+        width: 100%;
+        box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.2);
+    }
+}
+
+/* Categories */
+.categories {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    padding: 1rem;
+    background: #fff;
+}
+
+.category {
+    padding: 0.5rem 1rem;
+    border: none;
+    background-color: #f0f0f0;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.category.active {
+    background-color: #007bff;
+    color: #fff;
+}
+
+/* Product List */
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+    opacity: 0; /* Start invisible for animation */
+    animation: floatDown 1s forwards; /* Apply the animation */
+}
+
+/* Product Card */
+.product-card {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.product-card img {
+    max-width: 100%;
+    height: 150px;
+    object-fit: cover;
+    margin-bottom: 0.5rem;
+    border-radius: 8px;
+}
+
+.product-card h3 {
+    font-size: 1rem;
+    margin-top: 1rem;
+}
+
+/* Keyframes for animations */
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* New Float Animation for Product List */
+@keyframes floatDown {
+    from {
+        transform: translateY(-30px); /* Start slightly above */
+        opacity: 0; /* Start invisible */
+    }
+    to {
+        transform: translateY(0); /* End at normal position */
+        opacity: 1; /* Fully visible */
+    }
+}
+
+/* Details Panel Base Styles */
+.details-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 30%;
+    max-width: 400px;
+    height: 100vh; /* Full viewport height */
+    background: #fff;
+    border-left: 1px solid #ddd;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    display: none;
+    flex-direction: column;
+    padding: 1rem;
+    z-index: 1050; /* Lower than modal but still above other content */
+    opacity: 0;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.details-panel.active {
+    display: flex;
+}
+
+#detailsImage {
+    margin-top: 3rem;
+}
+
+#detailsTitle {
+    margin-top: 1rem;
+}
+
+#detailsDescription {
+    margin-top: 1rem;
+}
+
+/* Mobile View Adjustments */
+@media (max-width: 768px) {
+    .details-panel {
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 100vh; /* Adjust height for mobile */
+        border-left: none;
+        border-top: 1px solid #ddd;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        animation-name: slideDown;
+        z-index: 1050; /* Ensure it's on top of other content */
+        overflow-y: auto; /* Enable scrolling */
+    }
+}
+
+/* Desktop View Adjustments */
+@media (min-width: 769px) {
+    .details-panel {
+        animation-name: slideInLeft; /* Animation for larger screens */
+    }
+}
+
+/* Close Button Styling */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    padding: 10px;
+    left: 10px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: red;
+}
+
+hr {
+    margin-top: 10px;
+}
+
+/* Borrow Button Styling */
+.borrow {
+    background-color: #007bff; /* Blue background */
+    color: #fff; /* White text */
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 25px; /* Rounded corners */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s; /* Smooth transition for hover effects */
+    margin-top: 1rem; /* Space between description and button */
+    width: 8rem;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between the icon and the text */
+}
+
+.borrow:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: translateY(-2px); /* Lift effect on hover */
+}
+
+.borrow:active {
+    background-color: #004085; /* Even darker blue when clicked */
+    transform: translateY(2px); /* Slight depression effect */
+}
+
+.borrow:focus {
+    outline: none; /* Remove the outline when focused */
+}
+
+.borrow i {
+    font-size: 1.2rem; /* Icon size */
+}
+
+/* Bootstrap Modal Styling */
+.modal {
+    z-index: 1060; /* Ensure modal overlays everything */
+}
+
+.modal-dialog {
+    z-index: 1070; /* Modal content on top of other elements */
+}
